@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biliyard160</title>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<section id="login" hidden>
+  <form id="loginForm" class="card login">
+    <div class="logo"><span class="ball">160</span><b>Biliyard160</b></div>
+    <p class="muted tag">Biliard xonasi boshqaruvi</p>
+    <label>Login<input name="login" type="text" required autocomplete="username" autocapitalize="none" spellcheck="false"></label>
+    <label>Parol<input name="password" type="password" required autocomplete="current-password"></label>
+    <p class="err" id="loginErr"></p>
+    <button class="btn primary" type="submit">Kirish</button>
+  </form>
+</section>
+
+<div id="app" hidden>
+  <header>
+    <div class="logo"><span class="ball">160</span><b>Biliyard160</b></div>
+    <nav>
+      <button data-view="tables" class="on">🎱 Stollar</button>
+      <button data-view="menu">🍹 Menyu</button>
+      <button data-view="stats">📊 Hisobot</button>
+    </nav>
+    <div class="tools">
+      <button id="themeBtn" class="btn ghost icon" title="Tun / kun rejimi" aria-label="Tun / kun rejimi"><span class="i-sun">☀️</span><span class="i-moon">🌙</span></button>
+      <button id="logoutBtn" class="btn ghost" title="Chiqish">🚪 Chiqish</button>
+    </div>
+  </header>
+  <main>
+    <section id="v-tables"><div id="tableGrid" class="grid"></div>
+      <div class="card banner"><div><span class="k">Hozir band stollar</span><strong id="bandCount">0 / 3</strong><p>Har daqiqa hisobda. Omad tilaymiz!</p></div><div id="rack"></div></div></section>
+    <section id="v-menu" hidden>
+      <div class="card">
+        <h2>⏱️ Soatlik tarif</h2>
+        <form id="rateForm" class="row"><input id="rateInp" type="number" min="0" step="1000" required><button class="btn primary">Saqlash</button></form>
+      </div>
+      <div class="card">
+        <h2>➕ Mahsulot qo'shish</h2>
+        <form id="menuForm" class="row"><input name="name" placeholder="Nomi (Cola 0.5L)" required><input name="price" type="number" min="0" placeholder="Narxi, so'm" required><button class="btn primary">Qo'shish</button></form>
+      </div>
+      <div class="card"><h2>📋 Menyu</h2><div id="menuList"></div></div>
+    </section>
+    <section id="v-stats" hidden>
+      <div class="grid kpis">
+        <div class="card"><span class="muted">💰 Bugungi tushum</span><strong id="kDay">0</strong></div>
+        <div class="card"><span class="muted">📅 Shu oy tushumi</span><strong id="kMonth">0</strong></div>
+      </div>
+      <div class="card"><h2>🧾 Bugungi cheklar</h2><div id="history" class="scroll"></div></div>
+    </section>
+  </main>
+</div>
+<dialog id="dlg"></dialog>
+<div id="toast" role="status"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
